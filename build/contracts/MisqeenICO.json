@@ -1,0 +1,878 @@
+{
+  "contractName": "MisqeenICO",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract MisqeenToken",
+          "name": "_tokenContract",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_tokenPrice",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "tokenContract",
+      "outputs": [
+        {
+          "internalType": "contract MisqeenToken",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "tokenPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract MisqeenToken\",\"name\":\"_tokenContract\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_tokenPrice\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenContract\",\"outputs\":[{\"internalType\":\"contract MisqeenToken\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"tokenPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/D/dev/dapp/misqeen/contracts/MisqeenICO.sol\":\"MisqeenICO\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/dev/dapp/misqeen/contracts/MisqeenICO.sol\":{\"keccak256\":\"0x755f4f0fe486d8b5eee6d1d03247953569df3266aea5ebcd2bdbb565bd7c0c9d\",\"urls\":[\"bzz-raw://fa43671a3ebad289e4bb377ee12f7eba471a8ff4c47c7405f1ef45c8ea490c76\",\"dweb:/ipfs/QmUBEWxq9SdWmHTzCQfpL5S6NPgC8Rp9D9T64TQRHP8CXD\"]},\"/D/dev/dapp/misqeen/contracts/MisqeenToken.sol\":{\"keccak256\":\"0x657331a428e254ef3df3cb92c5ae8575adb96c912df0540e0be8fd3b240b7b9e\",\"urls\":[\"bzz-raw://b3fdd12809444bb5c3eb4509a01ea7280baa6900c412921e077034a665afa237\",\"dweb:/ipfs/Qmamyqj1wdD6NgPhgrZofBB9UA9EZY1RuturTPfFJduXxJ\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506040516101e23803806101e28339818101604052604081101561003357600080fd5b810190808051906020019092919080519060200190929190505050336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555081600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555080600281905550505060fc806100e66000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806355a373d61460375780637ff9b59614607f575b600080fd5b603d609b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b608560c1565b6040518082815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6002548156fea265627a7a72315820ace383cc81f1e412441b084b919df30886688f5683311087fcc742a8658ac03164736f6c63430005100032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806355a373d61460375780637ff9b59614607f575b600080fd5b603d609b565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b608560c1565b6040518082815260200191505060405180910390f35b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6002548156fea265627a7a72315820ace383cc81f1e412441b084b919df30886688f5683311087fcc742a8658ac03164736f6c63430005100032",
+  "sourceMap": "66:302:0:-;;;184:181;8:9:-1;5:2;;;30:1;27;20:12;5:2;184:181:0;;;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;184:181:0;;;;;;;;;;;;;;;;;;;;;;;;;271:10;263:5;;:18;;;;;;;;;;;;;;;;;;308:14;292:13;;:30;;;;;;;;;;;;;;;;;;346:11;333:10;:24;;;;184:181;;66:302;;;;;;",
+  "deployedSourceMap": "66:302:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;66:302:0;;;;;;;;;;;;;;;;;;;;;;;;112:33;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;152:25;;;:::i;:::-;;;;;;;;;;;;;;;;;;;112:33;;;;;;;;;;;;;:::o;152:25::-;;;;:::o",
+  "source": "pragma solidity >=0.4.22 <0.9.0;\r\nimport \"./MisqeenToken.sol\";\r\n\r\ncontract MisqeenICO{\r\n    address admin;\r\n    MisqeenToken public tokenContract;\r\n    uint256 public tokenPrice;\r\n    constructor(MisqeenToken _tokenContract, uint256 _tokenPrice) public{\r\n        admin = msg.sender;\r\n        tokenContract = _tokenContract;\r\n        tokenPrice = _tokenPrice;\r\n    }\r\n}",
+  "sourcePath": "D:/dev/dapp/misqeen/contracts/MisqeenICO.sol",
+  "ast": {
+    "absolutePath": "/D/dev/dapp/misqeen/contracts/MisqeenICO.sol",
+    "exportedSymbols": {
+      "MisqeenICO": [
+        30
+      ]
+    },
+    "id": 31,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:0"
+      },
+      {
+        "absolutePath": "/D/dev/dapp/misqeen/contracts/MisqeenToken.sol",
+        "file": "./MisqeenToken.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 31,
+        "sourceUnit": 214,
+        "src": "34:28:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 30,
+        "linearizedBaseContracts": [
+          30
+        ],
+        "name": "MisqeenICO",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 4,
+            "name": "admin",
+            "nodeType": "VariableDeclaration",
+            "scope": 30,
+            "src": "92:13:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 3,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "92:7:0",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6,
+            "name": "tokenContract",
+            "nodeType": "VariableDeclaration",
+            "scope": 30,
+            "src": "112:33:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_MisqeenToken_$213",
+              "typeString": "contract MisqeenToken"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 5,
+              "name": "MisqeenToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 213,
+              "src": "112:12:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_MisqeenToken_$213",
+                "typeString": "contract MisqeenToken"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 8,
+            "name": "tokenPrice",
+            "nodeType": "VariableDeclaration",
+            "scope": 30,
+            "src": "152:25:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 7,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "152:7:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 28,
+              "nodeType": "Block",
+              "src": "252:113:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 18,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 15,
+                      "name": "admin",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4,
+                      "src": "263:5:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 16,
+                        "name": "msg",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 228,
+                        "src": "271:3:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_magic_message",
+                          "typeString": "msg"
+                        }
+                      },
+                      "id": 17,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "sender",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "271:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "263:18:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 19,
+                  "nodeType": "ExpressionStatement",
+                  "src": "263:18:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 22,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 20,
+                      "name": "tokenContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6,
+                      "src": "292:13:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_MisqeenToken_$213",
+                        "typeString": "contract MisqeenToken"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 21,
+                      "name": "_tokenContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "308:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_MisqeenToken_$213",
+                        "typeString": "contract MisqeenToken"
+                      }
+                    },
+                    "src": "292:30:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_MisqeenToken_$213",
+                      "typeString": "contract MisqeenToken"
+                    }
+                  },
+                  "id": 23,
+                  "nodeType": "ExpressionStatement",
+                  "src": "292:30:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 26,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 24,
+                      "name": "tokenPrice",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8,
+                      "src": "333:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 25,
+                      "name": "_tokenPrice",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12,
+                      "src": "346:11:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "333:24:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 27,
+                  "nodeType": "ExpressionStatement",
+                  "src": "333:24:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 29,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 13,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10,
+                  "name": "_tokenContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 29,
+                  "src": "196:27:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_MisqeenToken_$213",
+                    "typeString": "contract MisqeenToken"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 9,
+                    "name": "MisqeenToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 213,
+                    "src": "196:12:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_MisqeenToken_$213",
+                      "typeString": "contract MisqeenToken"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 12,
+                  "name": "_tokenPrice",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 29,
+                  "src": "225:19:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 11,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "225:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "195:50:0"
+            },
+            "returnParameters": {
+              "id": 14,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "252:0:0"
+            },
+            "scope": 30,
+            "src": "184:181:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 31,
+        "src": "66:302:0"
+      }
+    ],
+    "src": "0:368:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/D/dev/dapp/misqeen/contracts/MisqeenICO.sol",
+      "exportedSymbols": {
+        "MisqeenICO": [
+          30
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".22",
+            "<",
+            "0.9",
+            ".0"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:32:0"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 214,
+          "absolutePath": "/D/dev/dapp/misqeen/contracts/MisqeenToken.sol",
+          "file": "./MisqeenToken.sol",
+          "scope": 31,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2,
+        "name": "ImportDirective",
+        "src": "34:28:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            30
+          ],
+          "name": "MisqeenICO",
+          "scope": 31
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "admin",
+              "scope": 30,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "stateMutability": "nonpayable",
+                  "type": "address"
+                },
+                "id": 3,
+                "name": "ElementaryTypeName",
+                "src": "92:7:0"
+              }
+            ],
+            "id": 4,
+            "name": "VariableDeclaration",
+            "src": "92:13:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "tokenContract",
+              "scope": 30,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract MisqeenToken",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "MisqeenToken",
+                  "referencedDeclaration": 213,
+                  "type": "contract MisqeenToken"
+                },
+                "id": 5,
+                "name": "UserDefinedTypeName",
+                "src": "112:12:0"
+              }
+            ],
+            "id": 6,
+            "name": "VariableDeclaration",
+            "src": "112:33:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "tokenPrice",
+              "scope": 30,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 7,
+                "name": "ElementaryTypeName",
+                "src": "152:7:0"
+              }
+            ],
+            "id": 8,
+            "name": "VariableDeclaration",
+            "src": "152:25:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 30,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_tokenContract",
+                      "scope": 29,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract MisqeenToken",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "MisqeenToken",
+                          "referencedDeclaration": 213,
+                          "type": "contract MisqeenToken"
+                        },
+                        "id": 9,
+                        "name": "UserDefinedTypeName",
+                        "src": "196:12:0"
+                      }
+                    ],
+                    "id": 10,
+                    "name": "VariableDeclaration",
+                    "src": "196:27:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_tokenPrice",
+                      "scope": 29,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 11,
+                        "name": "ElementaryTypeName",
+                        "src": "225:7:0"
+                      }
+                    ],
+                    "id": 12,
+                    "name": "VariableDeclaration",
+                    "src": "225:19:0"
+                  }
+                ],
+                "id": 13,
+                "name": "ParameterList",
+                "src": "195:50:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 14,
+                "name": "ParameterList",
+                "src": "252:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4,
+                              "type": "address",
+                              "value": "admin"
+                            },
+                            "id": 15,
+                            "name": "Identifier",
+                            "src": "263:5:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 228,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 16,
+                                "name": "Identifier",
+                                "src": "271:3:0"
+                              }
+                            ],
+                            "id": 17,
+                            "name": "MemberAccess",
+                            "src": "271:10:0"
+                          }
+                        ],
+                        "id": 18,
+                        "name": "Assignment",
+                        "src": "263:18:0"
+                      }
+                    ],
+                    "id": 19,
+                    "name": "ExpressionStatement",
+                    "src": "263:18:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract MisqeenToken"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6,
+                              "type": "contract MisqeenToken",
+                              "value": "tokenContract"
+                            },
+                            "id": 20,
+                            "name": "Identifier",
+                            "src": "292:13:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10,
+                              "type": "contract MisqeenToken",
+                              "value": "_tokenContract"
+                            },
+                            "id": 21,
+                            "name": "Identifier",
+                            "src": "308:14:0"
+                          }
+                        ],
+                        "id": 22,
+                        "name": "Assignment",
+                        "src": "292:30:0"
+                      }
+                    ],
+                    "id": 23,
+                    "name": "ExpressionStatement",
+                    "src": "292:30:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 8,
+                              "type": "uint256",
+                              "value": "tokenPrice"
+                            },
+                            "id": 24,
+                            "name": "Identifier",
+                            "src": "333:10:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 12,
+                              "type": "uint256",
+                              "value": "_tokenPrice"
+                            },
+                            "id": 25,
+                            "name": "Identifier",
+                            "src": "346:11:0"
+                          }
+                        ],
+                        "id": 26,
+                        "name": "Assignment",
+                        "src": "333:24:0"
+                      }
+                    ],
+                    "id": 27,
+                    "name": "ExpressionStatement",
+                    "src": "333:24:0"
+                  }
+                ],
+                "id": 28,
+                "name": "Block",
+                "src": "252:113:0"
+              }
+            ],
+            "id": 29,
+            "name": "FunctionDefinition",
+            "src": "184:181:0"
+          }
+        ],
+        "id": 30,
+        "name": "ContractDefinition",
+        "src": "66:302:0"
+      }
+    ],
+    "id": 31,
+    "name": "SourceUnit",
+    "src": "0:368:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x24dbFbF593d5f012ff73f0E4002B5841861a0E52",
+      "transactionHash": "0x97bea170e3cc7f6776fd3f3a05c20b72d98b1ef7e755e06ff096397d935c5455"
+    }
+  },
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-06-14T15:42:35.039Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
